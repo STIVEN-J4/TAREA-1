@@ -1,38 +1,30 @@
 #include<stdio.h>
-#include<conio.h>
-void intercambiar(float *numb1,float *numb2);
-void ordenar(float arreglo[],int indicetotal);
-void imprimir(float arreglo[],int indicetotal);
-
+int par(int numero);
+int impar(int numero);
 int main ()
 {
-
-	float arreglo[10]={25.5,27.6,15.24,3.27,5.15,6.21,7.57,4.61,5.4};
-	imprimir(arreglo,10);
-	ordenar(arreglo,10);
-	imprimir(arreglo,10);
+	int numero;
+	do{
+		printf(" Ingresar un numero mayor que cero:\n");
+		scanf("%d",&numero);
+	}
+	while (numero<=0);
+	if(par(numero))
+	printf("El numero %d es par",numero);
+	else
+	printf("El numero %d es impar",numero);
 }
-void intercambiar (float *numb1,float *numb2)
+int par(int numero)
 {
-	float temporal;
-	temporal=*numb1;
-	*numb1=*numb2;
-	*numb2=temporal;
+	if (numero==0)
+	return 1;
+	else
+	return impar(numero-1);
 }
-void ordenar(float arreglo[],int indicetotal)
+int impar(int numero)
 {
-	int contadori,j;
-	for (contadori=indicetotal-1;contadori>0;contadori--)
-		for(j=0;j<contadori;j++)
-			if(arreglo[j]>arreglo[j+1])
-			intercambiar(&arreglo[j],&arreglo[j+1]);
-}
-void imprimir(float arreglo[],int indicetotal)
-{
-	int i;
-	for(i=0;i<indicetotal-1;i++){
-	printf("%2.f\t",arreglo[i],((i+1)%10==0?'\n':' '));
-	/*si((i+1)%10==0)*/
-}
-printf("%.2f\n",arreglo[indicetotal-1]);
+	if (numero==0)
+	return 0;
+	else
+	return par (numero-1);
 }
